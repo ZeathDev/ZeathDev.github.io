@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简介</title>
+    <!-- 引入本地 Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('img/background.jpg'); /* 设置背景图片 */
+            background-size: cover; /* 使背景图片覆盖整个屏幕 */
+            background-position: center; /* 居中显示背景图片 */
+            background-repeat: no-repeat; /* 防止背景图片重复 */
+            background-attachment: fixed; /* 固定背景图片，不随滚动条滚动 */
+            color: #333;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .apple-style {
+            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* 深色模式样式 */
+        body.dark-mode {
+            background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景 */
+            color: white;
+        }
+        .dark-mode .apple-style {
+            background-color: rgba(28, 28, 45, 0.8); /* 半透明深蓝色背景 */
+            color: white;
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+            color: white;
+        }
+        .dark-mode p {
+            color: #bdc3c7;
+        }
+        .dark-mode-button {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .mt-20 {
+                margin-top: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <img src="darkmode.png" alt="Toggle Dark Mode" id="toggle-dark-mode" class="dark-mode-button">
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 apple-style text-center">
+            <h1>👋Zeath</h1>
+            <p>❤业余开发者 | 🎮Game爱好者 | 💻Java学习者</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 apple-style mt-20">
+            <h2>🤔关于我</h2>
+            <p>我是一名业余开发者，仅此而已。</p>
+        </div>
+        <div class="col-md-6 col-sm-12 apple-style mt-20">
+            <h2>🤗技能</h2>
+            <ul>
+                <li>HTML &amp; CSS</li>
+                <li>JavaScript</li>
+                <li>C &amp; C++</li>
+                <li>Java</li>
+                <li>Kotlin</li>
+                <li>Python</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 apple-style mt-20">
+            <h2>🥰联系我</h2>
+            <p>Email: ZeathDev@outlook.com</p>
+            <p>Github: <a href="https://github.com/ZeathDev" target="_blank">ZeathDev</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- 异步引入 jQuery 和 Popper.js -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" async></script>
+<!-- 延迟加载 Bootstrap JS -->
+<script src="js/bootstrap.min.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('toggle-dark-mode').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.body.classList.toggle('dark-mode');
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
