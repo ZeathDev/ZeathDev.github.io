@@ -1,133 +1,279 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta name="keywords" content="Zeath, Backday, Dev"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeath's site</title>
-    <!-- 引入本地 Bootstrap CSS -->
+    <title>Zeath的个人简介</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 自定义样式 -->
     <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #607D8B;
+            --light-bg: #f8f9fa;
+        }
+        
         body {
-            background-image: url('img/background.jpg'); /* 设置背景图片 */
-            background-size: cover; /* 使背景图片覆盖整个屏幕 */
-            background-position: center; /* 居中显示背景图片 */
-            background-repeat: no-repeat; /* 防止背景图片重复 */
-            background-attachment: fixed; /* 固定背景图片，不随滚动条滚动 */
-            color: #333;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-image: url('img/background.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
         }
-        .container {
-            margin-top: 50px;
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(96, 125, 139, 0.9));
+            color: white;
+            padding: 100px 0;
         }
-        .apple-style {
-            background-color: rgba(255, 255, 255, 0.8); /* 半透明白色背景 */
-            padding: 20px;
+
+        .section {
+            padding: 80px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-badge {
+            background-color: var(--light-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 25px;
+            margin: 10px;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
-        h1, h2, h3, h4, h5, h6 {
-            color: #333;
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            color: var(--secondary-color);
         }
-        p {
-            color: #666;
+
+        .contact-link i {
+            margin-right: 10px;
+            font-size: 1.5em;
         }
-        a:hover {
-            text-decoration: underline;
-        }
-        /* 深色模式样式 */
-        body.dark-mode {
-            background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景 */
-            color: white;
-        }
-        .dark-mode .apple-style {
-            background-color: rgba(28, 28, 45, 0.8); /* 半透明深蓝色背景 */
-            color: white;
-        }
-        .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
-            color: white;
-        }
-        .dark-mode p {
-            color: #bdc3c7;
-        }
-        .dark-mode-button {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-        }
+
+        /* 响应式设计调整 */
         @media (max-width: 768px) {
-            .mt-20 {
-                margin-top: 20px !important;
+            .hero-section {
+                padding: 60px 0;
+                text-align: center;
+            }
+
+            .hero-section img {
+                margin-top: 30px;
+                max-width: 200px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .contact-link {
+                display: block;
+                margin: 15px auto;
+                max-width: 280px;
             }
         }
+
+        /* GitHub按钮样式 */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background-color: #24292e;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: none;
+            font-size: 1.1em;
+        }
+
+        .github-btn:hover {
+            transform: translateY(-3px);
+            background-color: #2f363d;
+            color: white;
+        }
+
+        .github-btn i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
     </style>
+    <!-- 在head部分添加Font Awesome图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">我的简介</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">关于我</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">技能</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">项目</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系我</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <img src="img/darkmode.png" alt="Toggle Dark Mode" id="toggle-dark-mode" class="dark-mode-button">
-                </li>
-            </ul>
+    <!-- 主页横幅 -->
+    <section class="hero-section" id="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="display-4 fw-bold">你好，我是Zeath</h1>
+                    <p class="lead">Minecraft客户端开发者 / 编程小白</p>
+                    <a href="https://github.com/ZeathDev" class="github-btn" target="_blank">
+                        <i class="fab fa-github"></i>
+                        访问我的GitHub
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <img src="img/zeath.jpg" alt="个人照片" class="img-fluid rounded-circle">
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </section>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 apple-style text-center">
-            <h1>👋Zeath</h1>
-            <p>❤业余开发者 | 🎮Game爱好者 | 💻Java学习者</p>
+    <!-- 技能部分 -->
+    <section class="section bg-light" id="skills">
+        <div class="container">
+            <h2 class="text-center mb-5">专业技能</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">前端开发</h5>
+                            <div class="skill-badges">
+                                <span class="skill-badge">HTML5</span>
+                                <span class="skill-badge">CSS3</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <!-- <span class="skill-badge">React</span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">后端开发</h5>
+                            <div class="skill-badges">
+                                <!-- <span class="skill-badge">Node.js</span> -->
+                                <span class="skill-badge">Java</span>
+                                <span class="skill-badge">C / C++</span>
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">设计能力</h5>
+                            <div class="skill-badges">
+                                <span class="skill-badge">UI设计</span>
+                                <span class="skill-badge">Figma</span>
+                                <span class="skill-badge">Photoshop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 col-sm-12 apple-style mt-20">
-            <h2>🤔关于我</h2>
-            <p>我是一名业余开发者，仅此而已。</p>
-        </div>
-        <div class="col-md-6 col-sm-12 apple-style mt-20">
-            <h2>🤗技能</h2>
-            <ul>
-                <li>HTML &amp; CSS</li>
-                <li>JavaScript</li>
-                <li>C &amp; C++</li>
-                <li>Java</li>
-                <li>Kotlin</li>
-                <li>Python</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 apple-style mt-20">
-            <h2>🥰联系我</h2>
-            <p>Email: ZeathDev@outlook.com</p>
-            <p>Github: <a href="https://github.com/ZeathDev" target="_blank">ZeathDev</a></p>
-        </div>
-    </div>
-</div>
+    </section>
 
-<!-- 异步引入 jQuery 和 Popper.js -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" async></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" async></script>
-<!-- 延迟加载 Bootstrap JS -->
-<script src="js/bootstrap.min.js" defer></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('toggle-dark-mode').addEventListener('click', function(event) {
-            event.preventDefault();
-            document.body.classList.toggle('dark-mode');
-        });
-    });
-</script>
+    <!-- 项目展示 -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="text-center mb-5">项目经验</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="img/pj1.png" class="card-img-top" alt="项目1">
+                        <div class="card-body">
+                            <h5 class="card-title">Backday客户端</h5>
+                            <p class="card-text">使用Kotlin开发的Minecraft客户端。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="img/pj2.jpg" class="card-img-top" alt="项目2">
+                        <div class="card-body">
+                            <h5 class="card-title">HackSoar客户端</h5>
+                            <p class="card-text">基于LikeSoar的Minecraft客户端，添加了更多的功能和绕过，对Vanilla HvH有很好的胜率。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="section bg-light" id="contact">
+        <div class="container">
+            <h2 class="text-center mb-5">联系方式</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <a href="mailto:ZeathDev@outlook.com" class="contact-link">
+                        <i class="fas fa-envelope"></i>
+                        ZeathDev@outlook.com
+                    </a>
+                    <a href="https://github.com/ZeathDev" class="contact-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Zeath.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
