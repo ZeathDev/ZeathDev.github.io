@@ -27,6 +27,12 @@
             background: linear-gradient(135deg, rgba(33, 150, 243, 0.9), rgba(96, 125, 139, 0.9));
             color: white;
             padding: 100px 0;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+
+        .hero-section.fade-out {
+            opacity: 0.3;
+            transform: translateY(-20px);
         }
 
         .section {
@@ -274,6 +280,27 @@
 
     <!-- Bootstrap 5 JS -->
     <script src="js/bootstrap.bundle.min.js"></script>
+    
+    <!-- 滚动动画脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heroSection = document.querySelector('.hero-section');
+            let lastScrollY = window.scrollY;
+            
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                
+                // 当滚动超过横幅高度的20%时开始淡出效果
+                if (currentScrollY > heroSection.offsetHeight * 0.2) {
+                    heroSection.classList.add('fade-out');
+                } else {
+                    heroSection.classList.remove('fade-out');
+                }
+                
+                lastScrollY = currentScrollY;
+            });
+        });
+    </script>
 </body>
 </html>
 
