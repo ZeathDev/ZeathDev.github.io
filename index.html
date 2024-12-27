@@ -32,7 +32,6 @@
 
         .hero-section.fade-out {
             opacity: 0.3;
-            transform: translateY(-20px);
         }
 
         .section {
@@ -126,6 +125,18 @@
         .github-btn i {
             margin-right: 10px;
             font-size: 1.2em;
+        }
+
+        /* 添加滚动显示动画样式 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
     <!-- 在head部分添加Font Awesome图标库 -->
@@ -287,6 +298,31 @@
             const heroSection = document.querySelector('.hero-section');
             let lastScrollY = window.scrollY;
             
+            // 为所有主要部分添加reveal类
+            document.querySelectorAll('section:not(.hero-section)').forEach(section => {
+                section.classList.add('reveal');
+            });
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.add('reveal');
+            });
+
+            // 检查元素是否在视图中的函数
+            function checkReveal() {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150; // 元素显示的触发距离
+
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+
+            // 初始检查
+            checkReveal();
+
+            // 滚动事件处理
             window.addEventListener('scroll', () => {
                 const currentScrollY = window.scrollY;
                 
@@ -298,6 +334,9 @@
                 }
                 
                 lastScrollY = currentScrollY;
+
+                // 检查元素显示
+                checkReveal();
             });
         });
     </script>
